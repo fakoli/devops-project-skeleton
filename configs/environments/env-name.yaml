@@ -1,0 +1,29 @@
+kind: awsEnvironment
+metadata:
+  name: env-name
+  labels: 
+  tags: []
+specs:
+  networkTemplate:
+    - vpcName: data
+      cidr: 10.0.0.0/22
+      subnets:
+      - name: databases
+        tags: []
+        cidr: 10.0.0.0/28
+        newbit_size:  2
+      - name: kubernetesEndpoints
+        tags: []
+        cidr: 10.0.0.16/28
+        newbit_size:  2
+    - vpcName: control
+      cidr: 10.0.4.0/22
+      subnets:
+      - name: monitoring
+        tags: []
+        cidr: 10.0.0.0/28
+        newbit_size:  2
+      - name: monitoring
+        tags: []
+        cidr: 10.0.0.16/28
+        newbit_size:  2
