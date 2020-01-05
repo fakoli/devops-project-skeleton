@@ -1,10 +1,10 @@
 provider "aws" {
   region = var.aws_region
-  
 }
 
 module "tfcloud" {
-  source = "../../../modules/iam/iam-users"
+  source  = "terraform-aws-modules/iam/aws//modules/iam-user"
+  version = "~> 2.0"
 
   name = "tfcloud.robot"
 
@@ -13,7 +13,8 @@ module "tfcloud" {
 }
 
 module "iam_group_superadmins" {
-  source = "../../../modules/iam/iam-group-with-policies"
+  source  = "terraform-aws-modules/iam/aws//modules/iam-group-with-policies"
+  version = "~> 2.0"
 
   name = "superadmins"
 
@@ -25,6 +26,13 @@ module "iam_group_superadmins" {
     "arn:aws:iam::aws:policy/AdministratorAccess",
   ]
 }
+
+
+
+
+
+
+
 
 
 
