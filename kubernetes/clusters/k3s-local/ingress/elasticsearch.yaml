@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: elasticsearch
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: elasticsearch.172.16.2.10.nip.io 
+    http:
+      paths:
+      - backend:
+          serviceName: elasticsearch-master
+          servicePort: 9200
+  tls:
+   - secretName: elasticsearch-tls-cert
